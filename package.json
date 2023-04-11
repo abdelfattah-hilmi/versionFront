@@ -9,16 +9,10 @@
   "type": "module",
   
   "scripts": {
-  
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
     
-  "dev": "vite --host",
-  
-    
-  "build": "tsc && vite build",
-  
-    
-  "preview": "vite preview"
-  
   },
   
   "dependencies": {
