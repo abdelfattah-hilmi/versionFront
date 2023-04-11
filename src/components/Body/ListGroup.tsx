@@ -23,7 +23,7 @@ function ListGroup(){
                 
             }
 
-            fetchVms();
+            // fetchVms();
         },[]
     )
 

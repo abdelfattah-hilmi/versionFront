@@ -3,8 +3,8 @@ return (
 <>
 <header aria-label="Page Header" className="bg-gray-50">
 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
-  <div className="flex items-center justify-end gap-4">
-    <div className="flex items-center gap-4">
+  <div className="md:flex items-center justify-center md:justify-end gap-4 sm:gap-2">
+    <div className="flex items-center justify-center md:justify-end gap-4 sm:gap-2">
       <div className="relative">
         <label className="sr-only" htmlFor="search"> Search </label>
 
