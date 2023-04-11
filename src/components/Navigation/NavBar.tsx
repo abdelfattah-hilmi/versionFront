@@ -16,57 +16,23 @@ function NavBar(){
             <ul className="flex items-center gap-6 text-sm">
               <li>
                 <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
+                  className="text-black font-bold transition hover:text-gray-900/75"
+                  href="/vms"
                 >
-                  About
+                  Virtual Machines
                 </a>
               </li>
   
               <li>
                 <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
+                  className="text-black font-bold transition hover:text-gray-900/75"
+                  href="/packages"
                 >
-                  Careers
+                  Packages
                 </a>
               </li>
   
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
-                >
-                  History
-                </a>
-              </li>
-  
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
-                >
-                  Services
-                </a>
-              </li>
-  
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
-                >
-                  Projects
-                </a>
-              </li>
-  
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="/"
-                >
-                  Blog
-                </a>
-              </li>
+              
             </ul>
           </nav>
         </div>

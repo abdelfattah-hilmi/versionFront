@@ -3,7 +3,7 @@ const Footer = () => {
       <div className="flex w-full flex-col items-center justify-between px-1 pb-8 pt-3 lg:px-8 xl:flex-row mt-auto">
         <h5 className="mb-4 text-center text-sm font-medium text-gray-600 sm:!mb-0 md:text-lg">
           <p className="mb-4 text-center text-sm text-gray-600 sm:!mb-0 md:text-base">
-            ©{1900 + new Date().getFullYear()} Horizon UI. All Rights Reserved.
+            ©{new Date().getFullYear()} FYcomputing. All Rights Reserved.
           </p>
         </h5>
         <div>
@@ -11,7 +11,7 @@ const Footer = () => {
             <li>
               <a
                 target="blank"
-                href="mailto:hello@simmmple.com"
+                href="mailto:hilmiabdelfattah@gmail.com"
                 className="text-base font-medium text-gray-600 hover:text-gray-600"
               >
                 Support
@@ -20,7 +20,7 @@ const Footer = () => {
             <li>
               <a
                 target="blank"
-                href="https://simmmple.com/licenses"
+                href="https://www.irevolution.com/en/home/"
                 className="text-base font-medium text-gray-600 hover:text-gray-600"
               >
                 License
@@ -29,21 +29,13 @@ const Footer = () => {
             <li>
               <a
                 target="blank"
-                href="https://simmmple.com/terms-of-service"
+                href="https://www.irevolution.com/en/home/"
                 className="text-base font-medium text-gray-600 hover:text-gray-600"
               >
                 Terms of Use
               </a>
             </li>
-            <li>
-              <a
-                target="blank"
-                href="https://blog.horizon-ui.com/"
-                className="text-base font-medium text-gray-600 hover:text-gray-600"
-              >
-                Blog
-              </a>
-            </li>
+            
           </ul>
         </div>
       </div>
