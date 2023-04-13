@@ -4,103 +4,88 @@ import Card from "./card/index";
 const machines_template = {
     id: 1,
     distro: "ubuntu",
-    date: "2021-05-01",
-    IP: "192.168.1.1",
+    date: "2023-04-02 09:40:23",
+    IP: "34.66.148.135",
     elements: [
         {
-            name: "Awsome Package",
-            installed: "1.0.0",
-            candidate: "1.0.1",
-            latest: "1.0.2",
+            name: "mongodb",
+            installed: "5.0.6",
+            candidate: "5.0.6",
+            latest: "6.2.1",
             cves: [
                 {
-                    id: "CVE-2021-0001",
+                    id: "CVE-2022-24272",
                     description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0001",
+                    link: "https://nvd.nist.gov/vuln/detail/CVE-2022-24272",
                     affected: "1.0.0",
                     severity: "High"
                 },
-                {
-                    id: "CVE-2021-0002",
-                    description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0002",
-                    affected: "1.0.1",
-                    severity: "Low"
-                },
-                {
-                    id: "CVE-2021-0003",
-                    description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0003",
-                    affected: "1.0.2",
-                    severity: "Medium"
-                }
+                
             ],
-            releaseNotes: "https://ubuntu.com/security/notices/USN-0001-1"
+            releaseNotes: "https://nginx.org/en/CHANGES"
         },
         {
-            name: "Bad Package",
-            installed: "1.0.0",
-            candidate: "1.0.1",
-            latest: "1.0.2",
+            name: "redis",
+            installed: "6.0.16",
+            candidate: "6.0.16",
+            latest: "7.0.10",
             cves: [
                 {
-                    id: "CVE-2021-0001",
+                    id: "CVE-2022-24735",
                     description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0001",
-                    affected: "1.0.0",
+                    link: "https://nvd.nist.gov/vuln/detail/CVE-2022-24735",
+                    affected: "<7.0.0 or <6.2.7",
                     severity: "High"
                 },
                 {
-                    id: "CVE-2021-0002",
+                    id: "CVE-2022-35977",
                     description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0002",
-                    affected: "1.0.1",
+                    link: "https://nvd.nist.gov/vuln/detail/CVE-2022-35977",
+                    affected: "<7.0.8",
                     severity: "High"
                 },
             ],
-            releaseNotes: "https://ubuntu.com/security/notices/USN-0001-1"
+            releaseNotes: "https://github.com/redis/redis/releases/tag/7.0.10"
         },
         {
-            name: "Good Package",
-            installed: "1.0.0",
-            candidate: "1.0.1",
-            latest: "1.0.2",
+            name: "nginx",
+            installed: "1.18.0",
+            candidate: "1.19",
+            latest: "1.24.0",
             cves: [
                 {
-                    id: "CVE-2021-0001",
+                    id: "CVE-2022-41742",
                     description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0001",
-                    affected: "1.0.0",
+                    link: "https://nvd.nist.gov/vuln/detail/CVE-2022-41742",
+                    affected: "1.23.2",
                     severity: "High"
                 },
                 {
-                    id: "CVE-2021-0002",
+                    id: "CVE-2013-0337",
                     description: "7adari",
-                    link: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0002",
-                    affected: "1.0.1",
+                    link: "https://nvd.nist.gov/vuln/detail/CVE-2013-0337",
+                    affected: "1.3.13",
                     severity: "High"
                 },
             ],
-            releaseNotes: "https://ubuntu.com/security/notices/USN-0001-1"
+            releaseNotes: "https://nginx.org/en/CHANGES"
         },
     ]
 }
 
-const machines = [];
-for (let i = 0; i < 20; i++) {
-    const distros = [
-        "ubuntu","debian","fedora","centos","arch",
-        "opensuse","alpine","gentoo","suse","rhel","mint"
-    ];
+const machines: any[] = [];
+
+for (let i = 0; i < 5; i++) {
+    const ids = ["643550c9c69e8230c678f22f","643550c9c69e8230c678f28c","643550c9c69e8230c678f112","643550c9c69e8230c678f74b","643550c9c69e8230c678f25a","643550c9c69e8230c678f23f"]
     const machine = Object.create(machines_template);
-    machine.id = `00${Math.floor(Math.random() * 100000000)}`;
-    machine.distro = distros[Math.floor(Math.random() * distros.length)];
+    machine.id = ids[Math.floor(Math.random() * 6)];
+    machine.distro = "ubuntu 18.04"
     machines.push(machine);
 }
 
 export default function() {
     return (
-        <div className="flex gap-2 flex-wrap justify-center">
+        <div className="m-5 flex gap-4 flex-wrap justify-center">
             {machines.map((machine,index) => (
                 <Card machine={machine} key={machine.id+index}/>
             ))}

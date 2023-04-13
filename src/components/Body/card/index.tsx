@@ -11,7 +11,7 @@ export default function({
     const [model, setModel] = useState(false);
     if(model) return <Dialog machine={machine} setModel={setModel}/>;
     return ( 
-        <article className="rounded-xl border border-gray-700 bg-white p-4 flex-[1_1_400px]">
+        <article className="bg-gray-100 rounded-xl border border-gray-700  p-4 flex-[1_1_400px]">
             <div className="flex items-center gap-4">
                 <img
                     alt={`${machine.distro} Logo`}
@@ -43,16 +43,15 @@ export default function({
             <ul className="mt-4 space-y-2">
                 <li>
                     <div
-                        className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600"
+                        className="block h-full rounded-lg border border-gray-700 p-4 hover:border-green-600 hover:border-2"
                         onClick={() => {
                             setModel(true);
                         }}
                     >
-                        <strong className="font-medium text-black">Elements</strong>
+                        <strong className="font-medium text-black">Packages</strong>
 
                         <p className="mt-1 text-xs font-medium text-black">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                            consequuntur deleniti, unde ab ut in!
+                            click to get more insights about this snapshot
                         </p>
                     </div>
                 </li>

@@ -1,5 +1,5 @@
 export default function({
-    data
+    data 
 }) {
     const {cves, packageName} = data;
     return (
@@ -15,8 +15,8 @@ export default function({
                             <tr>
                                 <th className="px-4 py-2">CVE</th>
                                 <th className="px-4 py-2">Affected</th>
-                                <th className="px-4 py-2">Description</th>
-                                <th className="px-4 py-2">Severity</th>
+                                {/* <th className="px-4 py-2">Description</th>
+                                <th className="px-4 py-2">Severity</th> */}
                                 <th className="px-4 py-2">References</th>
                             </tr>
                         </thead>
@@ -44,8 +44,8 @@ export default function({
                                 return (<tr key={i} className="border-t border-gray-300">
                                     <td className="px-4 py-2">{cve.id}</td>
                                     <td className="px-4 py-2">{cve.affected}</td>
-                                    <td className="px-4 py-2">{cve.description}</td>
-                                    <td className={`px-4 py-2 ${classedSeverity}`}>{cve.severity}</td>
+                                    {/* <td className="px-4 py-2">{cve.description}</td>
+                                    <td className={`px-4 py-2 ${classedSeverity}`}>{cve.severity}</td> */}
                                     <td className="px-4 py-2">
                                         <a
                                             className="text-blue-500"

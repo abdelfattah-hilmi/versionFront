@@ -1,67 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const SAMPLE = [{
-  _id: "643550c9c69e8230c678f22f",
-  "date-of-execution": "2023-04-02 09:40:23.758402",
-  distro: ["Ubuntu", "18.04", "bionic"],
-  "installed-packages": [
-    {
-      "candidate-version": "1.18.0",
-      cves: [
-        {
-          "affected-versions":
-            "[0.1.0, 0.5.38) [0.6.0, 0.6.39) [0.7.0, 0.7.62) [0.8.0, 0.8.15)",
-          "cve-id": "CVE-2009-2629",
-          "cve-link": "https://nvd.nist.gov/vuln/detail/CVE-2009-2629",
-        },
-        {
-          "affected-versions": "[0.1.0, 0.8.22]",
-          "cve-id": "CVE-2009-3555",
-          "cve-link": "https://nvd.nist.gov/vuln/detail/CVE-2009-3555",
-        },
-      ],
-      "installed-version": "15.0.1",
-      "latest-release-notes": [
-        "https://www.postgresql.org/about/news/postgresql-152-147-1310-1214-and-1119-released-2592/",
-      ],
-      "latest-version": "15.2",
-      "package-name": "postgresql",
-    },
-  ],
-}];
+
 
 function ListGroup() {
-  const [vms, setVms] = useState(null);
+  const [vms, setVms] = useState<any[]>([]);
 
   useEffect(() => {
-    // const fetchVms = async () => {
-    //     const response = await fetch("http://localhost:8000/vms/installed-packages",
-    //     {
-    //         headers:
-    //             {"Content-Type":"application/json"}
-    //         }
-    //         );
-    //     const json = await response.json()
+    const fetchVms = async () => {
+        const response = await fetch("http://localhost:10000/api/vms/installed-packages",
+        {
+            headers:
+                {"Content-Type":"application/json"}
+            }
+            );
+        const json = await response.json()
 
-    //     console.log(json)
-    //     setVms(json)
+        console.log(json)
+        setVms(json)
 
-    // }
+    };
+    fetchVms()
+  }
+    ,[])
 
     // simulate fetch remove it
-    const fetchVms = async () => {
-      const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve(SAMPLE), 500);
-      });
-      const result = await promise;
-      console.log(result);
-      setVms(result);
-    };
+  //   const fetchVms = async () => {
+  //     const promise = new Promise((resolve, reject) => {
+  //       setTimeout(() => resolve(SAMPLE), 500);
+  //     });
+  //     const result = await promise;
+  //     console.log(result);
+  //     setVms(result);
+  //   };
 
-    fetchVms();
-    console.log(vms);
-  }, []);
+  //   fetchVms();
+  //   console.log(vms);
+  // }, []);
 
   return (
     <>
