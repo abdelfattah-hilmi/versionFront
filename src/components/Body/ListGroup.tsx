@@ -1,43 +1,62 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import vmReduce from "../../lib/datacGathring/vmReduce";
+import gather from "../../lib/datacGathring/gather";
+
+import LoadingTable from "../Loading/table";
 
 
 function ListGroup() {
   const [vms, setVms] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchVms = async () => {
-        const response = await fetch("http://localhost:10000/api/vms/installed-packages",
-        {
+      // if the data is already in the local storage get it from there than fetch it from the server async
+        const data = localStorage.getItem("vms");
+        if (data) {
+            const reduced = JSON.parse(data);
+            const virtualMachines = gather(reduced);
+            setVms(virtualMachines);
+        }else{
+          setLoading(true);
+        }
+
+        // wait 4 seconds to simulate the loading time
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        // fetch the data from the server
+        
+
+        const response = await fetch("http://localhost:8000/vms/installed-packages",
+          {
             headers:
-                {"Content-Type":"application/json"}
-            }
-            );
+                {
+                  "Content-Type":"application/json"
+                }
+          }
+        );
         const json = await response.json()
+        const reduced = vmReduce(json);
 
-        console.log(json)
-        setVms(json)
-
+        // stringify the object to be able to store it in the local storage
+        localStorage.setItem("vms", JSON.stringify(reduced));
+        
+        const virtualMachines = gather(reduced);
+        // console.log(virtualMachines);
+        setVms(virtualMachines);
+        setLoading(false);
     };
-    fetchVms()
+    fetchVms();
   }
-    ,[])
+    ,[]);
 
-    // simulate fetch remove it
-  //   const fetchVms = async () => {
-  //     const promise = new Promise((resolve, reject) => {
-  //       setTimeout(() => resolve(SAMPLE), 500);
-  //     });
-  //     const result = await promise;
-  //     console.log(result);
-  //     setVms(result);
-  //   };
-
-  //   fetchVms();
-  //   console.log(vms);
-  // }, []);
-
+  if (loading){
+    return (
+      <LoadingTable />
+    )
+  }
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -82,7 +101,7 @@ function ListGroup() {
                       Edit
                     </a>
                     <Link
-                      to="/vms/details"
+                      to={`/vms/details?ip=${vms.ip}`}
                       className="font-medium text-yellow-500 p-3  hover:underline"
                     >
                       Details

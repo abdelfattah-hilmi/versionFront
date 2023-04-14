@@ -1,5 +1,5 @@
 export default function({
-    machine,
+    packages,
     setTab
 }) {
     return (
@@ -19,12 +19,12 @@ export default function({
                             </tr>
                         </thead>
                         <tbody>
-                            {machine.elements.map((pkg, i) => (
+                            {packages.map((pkg, i) => (
                                 <tr key={i} className="border-t border-gray-300">
-                                    <td className="px-4 py-2">{pkg.name}</td>
-                                    <td className="px-4 py-2">{pkg.installed}</td>
-                                    <td className="px-4 py-2">{pkg.candidate}</td>
-                                    <td className="px-4 py-2">{pkg.latest}</td>
+                                    <td className="px-4 py-2">{pkg["package-name"]}</td>
+                                    <td className="px-4 py-2">{pkg["installed-version"]}</td>
+                                    <td className="px-4 py-2">{pkg["candidate-version"]}</td>
+                                    <td className="px-4 py-2">{pkg["latest-version"]}</td>
                                     <td className="px-4 py-2">
                                         <button
                                             className="text-blue-500"
@@ -33,7 +33,7 @@ export default function({
                                                     page: "Cve",
                                                     data: {
                                                         cves: pkg.cves,
-                                                        packageName: pkg.name
+                                                        packageName: pkg["package-name"]
                                                     }
                                                 });
                                             }}
@@ -44,7 +44,7 @@ export default function({
                                     <td className="px-4 py-2">
                                         <a
                                             className="text-blue-500"
-                                            href={pkg.releaseNotes}
+                                            href={pkg['latest-release-notes']}
                                             target="_blank"
                                             rel="noreferrer"
                                         >

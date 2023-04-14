@@ -14,7 +14,13 @@ export default function({
     machine,
     setModel
 }) {
-
+    const distro = machine.distro[0];
+    const date = new Date(machine["date-of-execution"]);
+    const fullDate = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
     useEffect(()=>{
         const hide = document.getElementById("root");
         hide.style.opacity = "0.3";
@@ -34,30 +40,30 @@ export default function({
         >
             <div className="p-8 rounded-md text-center w-3/4 h-3/4 bg-gray-100 border border-gray-700 overflow-auto">
                 <img
-                    alt={`${machine.distro} Logo`}
-                    src={img_distros[machine.distro] || img_distros["ubuntu"]}
+                    alt={`${distro} Logo`}
+                    src={img_distros[distro] || img_distros["ubuntu"]}
                     className="mx-auto bg-gray-100 h-16 w-16 object-cover"
                 />
                 <header className="mt-4">
                     <h1 className="text-2xl font-bold text-gray-700">
-                        ID: {machine.id}
+                        ID: {machine._id}
                     </h1>
                     <div className="flex justify-center align-center gap-4 flex-wrap">
                         <div>
                             <span className="text-gray-700">Distro: </span>
-                            <span className="text-gray-700 font-bold">{machine.distro}</span>
+                            <span className="text-gray-700 font-bold">{machine.distro.join(" ")}</span>
                         </div>
                         <div>
                             <span className="text-gray-700">Address: </span>
-                            <span className="text-gray-700 font-bold">{machine.IP}</span>
+                            <span className="text-gray-700 font-bold">{machine.ip}</span>
                         </div>
                         <div>
                             <span className="text-gray-700">Date: </span>
-                            <span className="text-gray-700 font-bold">{machine.date}</span>
+                            <span className="text-gray-700 font-bold">{fullDate}</span>
                         </div>
                     </div>
                 </header>
-                {tab.page === "data" ? <Data machine={machine} setTab={setTab} />: <></>}
+                {tab.page === "data" ? <Data packages={machine["installed-packages"]} setTab={setTab} />: <></>}
                 {tab.page === "Cve" ? <Cves data={tab.data} />: <></>}
                 <div className="items-end px-4 py-3">
                     <button

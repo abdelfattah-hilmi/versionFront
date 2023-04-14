@@ -5,35 +5,56 @@ import Dialog from "./dialog";
 import {img_distros} from "../../../lib/distroLogos";
 
 export default function({
-    machine
+    machine 
 }) {
-
+    const distro = machine.distro[0];
+    const date = new Date(machine["date-of-execution"]);
+    const fullDate = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
     const [model, setModel] = useState(false);
     if(model) return <Dialog machine={machine} setModel={setModel}/>;
     return ( 
         <article className="bg-gray-100 rounded-xl border border-gray-700  p-4 flex-[1_1_400px]">
             <div className="flex items-center gap-4">
                 <img
-                    alt={`${machine.distro} Logo`}
-                    src={img_distros[machine.distro] || img_distros["ubuntu"]}
+                    alt={`${distro} Logo`}
+                    src={img_distros[distro] || img_distros["ubuntu"]}
                     className="h-16 w-16 rounded-full object-cover"
                 />
 
                 <div>
-                    <h3 className="text-lg font-medium text-black">ID: {machine.id}</h3>
+                    <h3 className="text-lg font-medium text-black">ID: {machine._id}</h3>
 
                     <div className="flow-root">
                         <ul className="-m-1 flex flex-wrap">
                             <li className="p-1 leading-none">
-                                <a href="#" className="text-xs font-medium text-black">IP: {machine.IP} </a>
+                                <p className="text-xs font-medium text-black">
+                                    IP :
+                                    <span className="text-xs font-medium text-gray-700">
+                                        {" " + machine.ip}
+                                    </span>
+                                </p>
                             </li>
 
                             <li className="p-1 leading-none">
-                                <a href="#" className="text-xs font-medium text-black">Date: {machine.date} </a>
+                                <p className="text-xs font-medium text-black">
+                                    Date :
+                                    <span className="text-xs font-medium text-gray-700">
+                                        {" " + fullDate}
+                                    </span>
+                                </p>
                             </li>
 
                             <li className="p-1 leading-none">
-                                <a href="#" className="text-xs font-medium text-black">Distro: {machine.distro}</a>
+                                <p className="text-xs font-medium text-black">
+                                    Distro :
+                                    <span className="text-xs font-medium text-gray-700">
+                                        {" " + machine.distro.join(" ")}
+                                    </span>
+                                </p>
                             </li>
                         </ul>
                     </div>
