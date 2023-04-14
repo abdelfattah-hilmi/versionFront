@@ -25,7 +25,7 @@ function ListGroup() {
         }
 
         // wait 4 seconds to simulate the loading time
-        await new Promise((resolve) => setTimeout(resolve, 4000));
+        // await new Promise((resolve) => setTimeout(resolve, 4000));
         // fetch the data from the server
         
 
