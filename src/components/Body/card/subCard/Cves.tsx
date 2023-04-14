@@ -42,14 +42,14 @@ export default function({
                                         break;
                                 }
                                 return (<tr key={i} className="border-t border-gray-300">
-                                    <td className="px-4 py-2">{cve.id}</td>
-                                    <td className="px-4 py-2">{cve.affected}</td>
+                                    <td className="px-4 py-2">{cve["cve-id"]}</td>
+                                    <td className="px-4 py-2">{cve["affected-versions"].slice(0,10)}</td>
                                     {/* <td className="px-4 py-2">{cve.description}</td>
                                     <td className={`px-4 py-2 ${classedSeverity}`}>{cve.severity}</td> */}
                                     <td className="px-4 py-2">
                                         <a
                                             className="text-blue-500"
-                                            href="https://www.google.com"
+                                            href={cve["cve-link"]}
                                             target="_blank"
                                             rel="noreferrer"
                                         >
